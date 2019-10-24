@@ -37,9 +37,15 @@ function generatePassword(lower, upper, number, symbol, length) {
 
 	console.log('typesCount: ', typesCount);
 
-	const typesArr = [{ lower }, { upper }, { number }, { symbol }];
+	const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
+		item => Object.values(item)[0]
+	);
 
 	console.log('typesArr: ', typesArr);
+
+	if (typesCount === 0) {
+		return '';
+	}
 }
 
 // Generator Functions - http://www.net-comber.com/charset.html
