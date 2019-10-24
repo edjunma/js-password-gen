@@ -2,12 +2,12 @@
 
 const resultEl = document.getElementById('result');
 const lengthEl = document.getElementById('length');
-const upperCaseEl = document.getElementById('uppercase');
-const lowerCaseEl = document.getElementById('lowercase');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
 const numbersEl = document.getElementById('numbers');
 const symbolsEl = document.getElementById('symbols');
 const generateEl = document.getElementById('generate');
-const clipboardEl = document.getElementById('clipboard');
+const clipboard = document.getElementById('clipboard');
 
 const randomFunc = {
 	lower: getRandomLower,
@@ -18,7 +18,7 @@ const randomFunc = {
 
 // Copy password to clipboard
 
-clipboardEl.addEventListener('click', () => {
+clipboard.addEventListener('click', () => {
 	const textarea = document.createElement('textarea');
 	const password = resultEl.innerText;
 
@@ -31,7 +31,7 @@ clipboardEl.addEventListener('click', () => {
 	textarea.select();
 	document.execCommand('copy');
 	textarea.remove();
-	alert('Password copied to clipboard!');
+	alert('Password copied to clipboard');
 });
 
 generate.addEventListener('click', () => {
@@ -39,7 +39,7 @@ generate.addEventListener('click', () => {
 	const hasLower = lowercaseEl.checked;
 	const hasUpper = uppercaseEl.checked;
 	const hasNumber = numbersEl.checked;
-	const hasSymbol = uppercaseEl.checked;
+	const hasSymbol = symbolsEl.checked;
 
 	resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
