@@ -14,6 +14,16 @@ const randomFunc = {
 	symbol: getRandomSymbol
 };
 
+generateEl.addEventListener('click', () => {
+	const length = +lengthEl.value;
+	const hasLower = lowercaseEl.checked;
+	const hasUpper = uppercaseEl.checked;
+	const hasNumber = numbersEl.checked;
+	const hasSymbol = uppercaseEl.checked;
+
+	generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
+
 // Generator Functions - http://www.net-comber.com/charset.html
 
 function getRandomLower() {
