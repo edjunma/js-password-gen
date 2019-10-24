@@ -1,5 +1,7 @@
 // DOM elements
 
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
 const upperCaseEl = document.getElementById('uppercase');
 const lowerCaseEl = document.getElementById('lowercase');
 const numbersEl = document.getElementById('numbers');
@@ -14,7 +16,25 @@ const randomFunc = {
 	symbol: getRandomSymbol
 };
 
-generateEl.addEventListener('click', () => {
+// Copy password to clipboard
+
+clipboardEl.addEventListener('click', () => {
+	const textarea = document.createElement('textarea');
+	const password = resultEl.innerText;
+
+	if (!password) {
+		return;
+	}
+
+	textarea.value = password;
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand('copy');
+	textarea.remove();
+	alert('Password copied to clipboard!');
+});
+
+generate.addEventListener('click', () => {
 	const length = +lengthEl.value;
 	const hasLower = lowercaseEl.checked;
 	const hasUpper = uppercaseEl.checked;
@@ -35,13 +55,9 @@ function generatePassword(lower, upper, number, symbol, length) {
 
 	const typesCount = lower + upper + number + symbol;
 
-	// console.log('typesCount: ', typesCount);
-
 	const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
 		item => Object.values(item)[0]
 	);
-
-	// console.log('typesArr: ', typesArr);
 
 	if (typesCount === 0) {
 		return '';
@@ -50,7 +66,6 @@ function generatePassword(lower, upper, number, symbol, length) {
 	for (let i = 0; i < length; i += typesCount) {
 		typesArr.forEach(type => {
 			const funcName = Object.keys(type)[0];
-			// console.log('funcName:', funcName);
 
 			generatedPassword += randomFunc[funcName]();
 		});
@@ -79,3 +94,16 @@ function getRandomSymbol() {
 	const symbols = '!@#$%^&*(){}[]=<>/,.';
 	return symbols[Math.floor(Math.random() * symbols.length)];
 }
+
+// SOCIAL PANEL JavaScript
+const floating_btn = document.querySelector('.floating-btn');
+const close_btn = document.querySelector('.close-btn');
+const social_panel_container = document.querySelector('.social-panel-container');
+
+floating_btn.addEventListener('click', () => {
+	social_panel_container.classList.toggle('visible');
+});
+
+close_btn.addEventListener('click', () => {
+	social_panel_container.classList.remove('visible');
+});
