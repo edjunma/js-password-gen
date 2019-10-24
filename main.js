@@ -21,8 +21,18 @@ generateEl.addEventListener('click', () => {
 	const hasNumber = numbersEl.checked;
 	const hasSymbol = uppercaseEl.checked;
 
-	generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+	resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
+
+// Generate password function
+function generatePassword(lower, upper, number, symbol, length) {
+	// 1. Init pw var
+	// 2. Filter out unchecked types
+	// 3. Loop over length call generator function for each type
+	// 4. Add final pw to the pw var and return
+
+	let generatedPassword = '';
+}
 
 // Generator Functions - http://www.net-comber.com/charset.html
 
