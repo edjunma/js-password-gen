@@ -32,6 +32,14 @@ function generatePassword(lower, upper, number, symbol, length) {
 	// 4. Add final pw to the pw var and return
 
 	let generatedPassword = '';
+
+	const typesCount = lower + upper + number + symbol;
+
+	console.log('typesCount: ', typesCount);
+
+	const typesArr = [{ lower }, { upper }, { number }, { symbol }];
+
+	console.log('typesArr: ', typesArr);
 }
 
 // Generator Functions - http://www.net-comber.com/charset.html
